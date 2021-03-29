@@ -1,12 +1,12 @@
-import { createStore } from 'vuex';
+import Vuex from 'vuex';
 
-export default createStore({
-  state: {
-  },
-  mutations: {
-  },
-  actions: {
-  },
+import MemberModule from '@/store/member';
+
+const store = new Vuex.Store({
+  state: {},
   modules: {
+    MemberModule,
   },
 });
+
+export default store;
