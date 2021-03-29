@@ -1,11 +1,11 @@
 import Vuex from 'vuex';
 
-import MemberModule from '@/store/member';
+import Member from '@/store/member';
 
 const store = new Vuex.Store({
   state: {},
   modules: {
-    MemberModule,
+    Member,
   },
 });
 

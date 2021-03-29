@@ -1,30 +1,14 @@
 import {
   Module,
-  GetterTree,
-  MutationTree,
-  ActionTree,
-} from 'vuex';
+  Mutation,
+  Action,
+  VuexModule,
+} from 'vuex-module-decorators';
 
-export class Member {
-  public id: number = 0;
-  public githubId: string = '';
-  public email: string = '';
-  public name: string = '';
-  public pictureUrl: string = '';
+@Module({
+  namespaced: true,
+})
+class Member extends VuexModule {
 }
 
-const getters: GetterTree<Member, any> = {};
-
-const mutations: MutationTree<Member> = {};
-
-const actions: ActionTree<Member, any> = {};
-
-const MemberModule: Module<Member, any> = {
-  namespaced: true,
-  state: new Member(),
-  getters,
-  mutations,
-  actions,
-};
-
-export default MemberModule;
+export default Member;

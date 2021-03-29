@@ -1,9 +1,11 @@
-import { createApp } from 'vue';
+import Vue, { createApp } from 'vue';
 import ElementPlus from 'element-plus';
+import createClient from '@/util/http';
 import App from './App.vue';
 import router from './router';
 import store from './store';
 import 'element-plus/lib/theme-chalk/index.css';
+
 import '@/assets/styles/tailwind.css';
 
 createApp(App)
