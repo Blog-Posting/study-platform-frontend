@@ -2,26 +2,7 @@ import { Module, ActionContext } from 'vuex';
 import { RootState } from '@/store';
 import { MutationType } from '@/store/modules/mutationType';
 import axios from 'axios';
-
-class Feed {
-  id: number;
-
-  title: string;
-
-  link: string;
-
-  description: string;
-
-  pubData: string;
-
-  constructor(id: number, title: string, link: string, description: string, pubData: string) {
-    this.id = id;
-    this.title = title;
-    this.link = link;
-    this.description = description;
-    this.pubData = pubData;
-  }
-}
+import { Feed } from '@/type/blog/Feed';
 
 export interface FeedState {
   feeds: Array<Feed>;

@@ -2,20 +2,7 @@ import { Module, ActionContext } from 'vuex';
 import { RootState } from '@/store';
 import { MutationType } from '@/store/modules/mutationType';
 import axios from 'axios';
-
-class Member {
-  email: string;
-
-  name: string;
-
-  pictureUrl: string;
-
-  constructor(email: string, name: string, pictureUrl: string) {
-    this.email = email;
-    this.name = name;
-    this.pictureUrl = pictureUrl;
-  }
-}
+import { Member } from '@/type/member/Member';
 
 export interface MemberState {
   member: Member | null;
