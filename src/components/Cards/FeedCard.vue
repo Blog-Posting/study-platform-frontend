@@ -23,8 +23,12 @@
 
       <footer class="flex items-center justify-between leading-none p-1 md:p-2">
         <a class="flex items-center no-underline hover:underline text-black" href="#">
-          <img alt="Placeholder" class="inline-block h-6 w-6 rounded-full ring-2 ring-white" :src="member.pictureUrl" />
-          <p class="ml-2 text-sm">{{ member.name }}</p>
+          <img
+            alt="Placeholder"
+            class="inline-block h-6 w-6 rounded-full ring-2 ring-white"
+            :src="feed.userPictureUrl"
+          />
+          <p class="ml-2 text-sm">{{ feed.userName }}</p>
         </a>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="24px" height="24px">
           <path
@@ -40,17 +44,12 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { Feed } from '@/type/blog/Feed';
-import { Member } from '@/type/member/Member';
 
 export default defineComponent({
   name: 'FeedCard',
   props: {
     feed: {
       type: Feed,
-      required: true,
-    },
-    member: {
-      type: Member,
       required: true,
     },
   },
