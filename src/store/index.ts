@@ -1,12 +1,15 @@
-import Vuex from 'vuex';
+import { createStore } from 'vuex';
+import {
+  memberModule,
+  MemberState,
+} from '@/store/modules/Member';
+import { Feed, FeedState } from '@/store/modules/Feed';
 
-import Member from '@/store/member';
+export interface RootState {
+  Member: MemberState;
+  Feed: FeedState;
+}
 
-const store = new Vuex.Store({
-  state: {},
-  modules: {
-    Member,
-  },
+export default createStore({
+  modules: { memberModule, Feed },
 });
-
-export default store;
