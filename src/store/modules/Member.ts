@@ -1,6 +1,6 @@
 import { Module, ActionContext } from 'vuex';
 import { RootState } from '@/store';
-import { MutationType } from '@/store/modules/mutationType.ts';
+import { MutationType } from '@/store/modules/mutationType';
 import axios from 'axios';
 
 class Member {
@@ -10,11 +10,7 @@ class Member {
 
   pictureUrl: string;
 
-  constructor(
-    email: string,
-    name: string,
-    pictureUrl: string,
-  ) {
+  constructor(email: string, name: string, pictureUrl: string) {
     this.email = email;
     this.name = name;
     this.pictureUrl = pictureUrl;
@@ -22,37 +18,24 @@ class Member {
 }
 
 export interface MemberState {
-  email: string;
-  name: string;
-  pictureUrl: string;
+  member: Member | null;
 }
 
-export const memberModule: Module<
-  MemberState,
-  RootState
-> = {
+export const memberModule: Module<MemberState, RootState> = {
   namespaced: true,
   state: {
-    email: '',
-    name: '',
-    pictureUrl: '',
+    member: null,
   },
 
   mutations: {
-    [MutationType.SET_MEMBER](
-      state,
-      { email, name, pictureUrl },
-    ) {
-      state.email = email;
-      state.name = name;
-      state.pictureUrl = pictureUrl;
+    [MutationType.SET_MEMBER](state, { email, name, pictureUrl }) {
+      state.member = new Member(email, name, pictureUrl);
     },
   },
 
   getters: {
     getMember(state) {
-      const { email, name, pictureUrl } = state;
-      return new Member(email, name, pictureUrl);
+      return state.member;
     },
   },
 

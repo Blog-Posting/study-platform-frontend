@@ -1,23 +1,59 @@
 import { Module, ActionContext } from 'vuex';
 import { RootState } from '@/store';
+import { MutationType } from '@/store/modules/mutationType';
+import axios from 'axios';
 
-export interface FeedState {
-  email: string;
+class Feed {
+  id: number;
+
+  title: string;
+
+  link: string;
+
+  description: string;
+
+  pubData: string;
+
+  constructor(id: number, title: string, link: string, description: string, pubData: string) {
+    this.id = id;
+    this.title = title;
+    this.link = link;
+    this.description = description;
+    this.pubData = pubData;
+  }
 }
 
-export const Feed: Module<FeedState, RootState> = {
+export interface FeedState {
+  feeds: Array<Feed>;
+}
+
+export const feedModule: Module<FeedState, RootState> = {
   namespaced: true,
-  state: () => ({
-    email: 'ksy90101@gmail.com',
-  }),
+  state: {
+    feeds: [],
+  },
 
-  mutations: {},
-
-  getters: {
-    getEmail(state, getters, rootState) {
-      return state.email;
+  mutations: {
+    [MutationType.SET_MEMBER](state, feeds) {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+      // @ts-ignore
+      state.feeds = feeds.map(feed => new Feed(feed.id, feed.title, feed.link, feed.description, feed.pubData));
     },
   },
 
-  actions: {},
+  getters: {
+    getFeeds(state) {
+      return state.feeds;
+    },
+  },
+
+  actions: {
+    async fetchFeeds({ commit }) {
+      const http = axios.create();
+      const res = await http.get('/feeds');
+      commit(MutationType.SET_FEEDS, res.data);
+
+      return res.data;
+    },
+  },
 };
