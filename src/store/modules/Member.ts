@@ -8,7 +8,7 @@ export interface MemberState {
   member: Member | null;
 }
 
-export const memberModule: Module<MemberState, RootState> = {
+export const member: Module<MemberState, RootState> = {
   namespaced: true,
   state: {
     member: null,

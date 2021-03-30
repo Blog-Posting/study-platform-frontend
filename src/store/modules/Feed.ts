@@ -8,7 +8,7 @@ export interface FeedState {
   feeds: Array<Feed>;
 }
 
-export const feedModule: Module<FeedState, RootState> = {
+export const feed: Module<FeedState, RootState> = {
   namespaced: true,
   state: {
     feeds: [],

@@ -38,8 +38,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from 'vue';
-import { mapActions, useStore } from 'vuex';
+import { defineComponent } from 'vue';
 import { Feed } from '@/type/blog/Feed';
 import { Member } from '@/type/member/Member';
 
@@ -56,16 +55,9 @@ export default defineComponent({
     },
   },
   setup() {
-    const store = useStore();
-    const getFeeds = computed(() => store.getters['feed/getFeeds']);
-
-    return {
-      getFeeds,
-    };
+    return {};
   },
-  methods: {
-    ...mapActions('feeds', ['fetchFeeds']),
-  },
+  methods: {},
 });
 </script>
 

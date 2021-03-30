@@ -69,8 +69,8 @@ export default defineComponent({
     return { ...toRefs(feed), fetchItems, feeds, member };
   },
   methods: {
-    ...mapActions('feedModule', ['fetchFeeds']),
-    ...mapActions('memberModule', ['fetchMember']),
+    ...mapActions('feed', ['fetchFeeds']),
+    ...mapActions('member', ['fetchMember']),
   },
 });
 </script>

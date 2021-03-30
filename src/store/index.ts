@@ -1,12 +1,6 @@
 import { createStore } from 'vuex';
-import {
-  memberModule,
-  MemberState,
-} from '@/store/modules/Member';
-import {
-  feedModule,
-  FeedState,
-} from '@/store/modules/Feed';
+import { member, MemberState } from '@/store/modules/Member';
+import { feed, FeedState } from '@/store/modules/Feed';
 
 export interface RootState {
   member: MemberState;
@@ -14,5 +8,5 @@ export interface RootState {
 }
 
 export default createStore({
-  modules: { memberModule, feedModule },
+  modules: { member, feed },
 });
