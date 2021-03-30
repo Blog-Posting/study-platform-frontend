@@ -22,12 +22,6 @@ export const feedModule: Module<FeedState, RootState> = {
     },
   },
 
-  getters: {
-    getFeeds(state) {
-      return state.feeds;
-    },
-  },
-
   actions: {
     async fetchFeeds({ commit }) {
       const http = axios.create();

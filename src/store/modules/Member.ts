@@ -20,12 +20,6 @@ export const memberModule: Module<MemberState, RootState> = {
     },
   },
 
-  getters: {
-    getMember(state) {
-      return state.member;
-    },
-  },
-
   actions: {
     async fetchMember({ commit }) {
       const http = axios.create();
