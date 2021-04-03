@@ -36,9 +36,9 @@ export const feed: Module<FeedState, RootState> = {
 
   actions: {
     async fetchFeeds({ commit }) {
+      console.log('fetchFeeds');
       const res = await http.get('/feeds');
       commit(MutationType.SET_FEEDS, res.data);
-
       return res.data;
     },
   },

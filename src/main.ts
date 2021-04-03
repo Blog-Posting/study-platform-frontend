@@ -6,4 +6,5 @@ import store from './store';
 import 'element-plus/lib/theme-chalk/index.css';
 import '@/assets/styles/tailwind.css';
 
-createApp(App).use(store).use(router).use(ElementPlus).mount('#app');
+createApp(App).use(store).use(router).use(ElementPlus)
+  .mount('#app');
