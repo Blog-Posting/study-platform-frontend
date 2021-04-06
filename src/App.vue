@@ -1,7 +1,7 @@
 <template>
   <Header />
   <div class="flex middle mt-auto flex-1">
-    <Nav class="flex" />
+    <!-- <Nav class="flex" /> -->
     <router-view class="flex-1" />
   </div>
 </template>
@@ -9,12 +9,12 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import Header from '@/components/Layouts/Header.vue';
-import Nav from '@/components/Layouts/Nav.vue';
+// import Nav from '@/components/Layouts/Nav.vue';
 
 export default defineComponent({
   components: {
     Header,
-    Nav,
+    // Nav,
   },
   setup() {
     return {};

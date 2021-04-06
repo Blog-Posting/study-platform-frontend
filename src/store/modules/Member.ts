@@ -39,16 +39,29 @@ export const member: Module<MemberState, RootState> = {
       return res.data;
     },
     async login({ commit }) {
-      const res = await http.get('/login/oauth/github');
-      commit(MutationType.SET_MEMBER, res.data);
+      // dummy
+      console.log('store login');
+      commit(MutationType.SET_MEMBER, {
+        email: 'email',
+        name: 'name',
+        pictureUrl: 'pictureUrl',
+      });
+      // const res = await http.get('/login/oauth/github');
+      // commit(MutationType.SET_MEMBER, res.data);
 
-      return res.data;
+      // return res.data;
     },
     async logout({ commit }) {
-      const res = await http.get('/logout');
-      commit(MutationType.SET_MEMBER, res.data);
-
-      return res.data;
+      // dummy
+      console.log('store logout');
+      // commit(MutationType.SET_MEMBER, {
+      //   email: 'email',
+      //   name: 'name',
+      //   pictureUrl: 'pictureUrl',
+      // });
+      // const res = await http.get('/logout');
+      // commit(MutationType.SET_MEMBER, res.data);
+      // return res.data;
     },
   },
 };
