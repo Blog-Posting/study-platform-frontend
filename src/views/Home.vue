@@ -1,15 +1,16 @@
 <template>
   <div class="home">
     <h2>home title</h2>
-    <div class="container flex flex-wrap my-12 mx-auto px-4 md:px-12">
-      <FeedCard v-for="n in list" :key="n" />
+    <div class="container flex flex-wrap my-12 mx-auto px-4 md:px-12" v-for="feed in feeds" :key="feed.id">
+      <FeedCard :member="member" :feeds="feeds" />
     </div>
     <div class="end"></div>
   </div>
 </template>
 <script lang="ts">
-import { defineComponent, reactive, toRefs, onMounted } from 'vue';
+import { defineComponent, reactive, toRefs, onMounted, computed } from 'vue';
 import { FeedCard } from '@/components/Cards';
+import { useStore } from 'vuex';
 
 export default defineComponent({
   name: 'Home',
@@ -17,9 +18,6 @@ export default defineComponent({
   setup() {
     const feed = reactive({
       list: 9,
-      // computedList: computed(() => {
-      //   return
-      // })
     });
     function fetchItems() {
       return new Promise(resolve => {
@@ -40,9 +38,8 @@ export default defineComponent({
         if (entry.isIntersecting) {
           observer.unobserve(entry.target);
           // observer.disconnect();
-          console.log('fetchItems()', fetchItems());
           try {
-            await fetchItems();
+            // await fetchItems();
           } catch (error) {
             console.error(error);
           }
@@ -53,7 +50,14 @@ export default defineComponent({
       const el = document.querySelector('.end') as HTMLElement;
       io.observe(el);
     });
-    return { ...toRefs(feed), fetchItems };
+
+    const store = useStore();
+    console.log('store', store);
+    store.dispatch('feed/fetchFeeds');
+    store.dispatch('member/fetchMember');
+    const feeds = computed(() => store.state['feed/feeds']);
+    const member = computed(() => store.state['member/member']);
+    return { ...toRefs(feed), fetchItems, feeds, member };
   },
 });
 </script>
